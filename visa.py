@@ -48,6 +48,7 @@ RETRY_TIME_U_BOUND = config["TIME"].getfloat("RETRY_TIME_U_BOUND")
 WORK_LIMIT_TIME = config["TIME"].getfloat("WORK_LIMIT_TIME")
 WORK_COOLDOWN_TIME = config["TIME"].getfloat("WORK_COOLDOWN_TIME")
 BAN_COOLDOWN_TIME = config["TIME"].getfloat("BAN_COOLDOWN_TIME")
+REQUEST_COUNT = config["TIME"].getfloat("REQUEST_COUNT")
 
 # CHROMEDRIVER
 # Details for the script to control Chrome
@@ -311,7 +312,7 @@ if __name__ == "__main__":
                     driver.get(SIGN_OUT_LINK)
                     time.sleep(WORK_COOLDOWN_TIME * hour)
                     first_loop = True
-                elif Req_count > 55:
+                elif Req_count > REQUEST_COUNT:
                     send_notification("REST", f"Break-time after {Req_count} times")
                     info_logger(LOG_FILE_NAME, f"Break-time after {Req_count} times")
                     print(f"Break-time after {Req_count} times")
